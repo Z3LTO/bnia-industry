@@ -8,7 +8,6 @@ import { CursorGlow } from "@/components/fx/cursor-glow";
 import { SpotlightCard } from "@/components/fx/spotlight-card";
 import { TiltCard } from "@/components/fx/tilt-card";
 import { Reveal } from "@/components/fx/reveal";
-import { HeroParticles } from "@/components/fx/hero-particles";
 import { MethodTimeline } from "@/components/fx/method-timeline";
 
 const NAV = [
@@ -79,11 +78,7 @@ export default function Home() {
           Agence d&apos;intégration IA · La Rochelle
         </span>
 
-        <div className="relative z-10 -my-4 h-[34vh] min-h-[220px] w-full max-w-4xl sm:h-[40vh]">
-          <HeroParticles />
-        </div>
-
-        <h1 className="relative z-10 text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl">
+        <h1 className="relative z-10 mt-8 text-4xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl">
           <CyberGlitchText text="L'IA qui travaille" className="text-white" />
           <span className="mt-2 block bg-gradient-to-r from-violet-300 via-indigo-300 to-cyan-200 bg-clip-text text-transparent">
             pour votre entreprise
