@@ -30,6 +30,23 @@ export function SpotlightNavbar({
 }: SpotlightNavbarProps) {
     const navRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(defaultActiveIndex);
+
+    // Suit la section visible pendant le défilement (liens d'ancre uniquement).
+    useEffect(() => {
+        const sections = items
+            .map((it, i) => ({ i, el: it.href.startsWith("#") ? document.querySelector(it.href) : null }))
+            .filter((x): x is { i: number; el: Element } => !!x.el);
+        if (!sections.length) return;
+        const onScroll = () => {
+            const mid = window.innerHeight * 0.4;
+            let current = sections[0].i;
+            for (const { i, el } of sections) if (el.getBoundingClientRect().top <= mid) current = i;
+            setActiveIndex(current);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [items]);
     const [hoverX, setHoverX] = useState<number | null>(null);
     const [isDark, setIsDark] = useState(false);
 
